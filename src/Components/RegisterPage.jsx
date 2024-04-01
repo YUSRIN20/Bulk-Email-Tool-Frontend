@@ -41,7 +41,8 @@ const RegisterPage = () => {
         console.log("Register Api Payloads", values);
         try {
             // If user doesn't Exist, proceed with registration
-            const resgisterRes = await axios.post('http://localhost:8000/emailapi/user/register',values)
+            // const resgisterRes = await axios.post('http://localhost:8000/emailapi/user/register',values)
+            const resgisterRes = await axios.post('https://bulk-email-tool-backend-iazh.onrender.com/emailapi/user/register',values)
             SetResponseMsg(resgisterRes.data.message);
             toast.success(resgisterRes.data.message);
             setTimeout(()=>{

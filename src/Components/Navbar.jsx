@@ -25,7 +25,8 @@ const Navbar = () => {
         // Cookies.remove('token')
         // navigate('/login')
         try {
-            const res = await axios.get('http://localhost:8000/emailapi/user/logout');
+            // const res = await axios.get('http://localhost:8000/emailapi/user/logout');
+            const res = await axios.get('https://bulk-email-tool-backend-iazh.onrender.com/emailapi/user/logout');
             // Clear Cookies related to authentication
             Cookies.remove('token')
             // Clear LocalStorage items related to authentication

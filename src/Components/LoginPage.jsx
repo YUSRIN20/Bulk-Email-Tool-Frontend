@@ -21,8 +21,8 @@ const LoginPage = ({setEmail,setUserName,paramsEmail}) => {
 
     const onSubmit = async (values) => {
         try {
-            const res = await axios.post('http://localhost:8000/emailapi/user/login', values);
-            // const res = await axios.post('https://url-shortener-backend-vx4e.onrender.com/api/user/login', values);
+            // const res = await axios.post('http://localhost:8000/emailapi/user/login', values);
+            const res = await axios.post('https://bulk-email-tool-backend-iazh.onrender.com/emailapi/user/login', values);
  
             SetResponseMsg(res.data.message);
             setUserName(res.data.data.lastname); // for displaying user name in home page

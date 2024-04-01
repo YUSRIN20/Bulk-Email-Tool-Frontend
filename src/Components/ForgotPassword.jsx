@@ -18,8 +18,9 @@ const ForgotPassword = () => {
 
     const onSubmit = async (values) => {
         try {
-            const res = await axios.post('http://localhost:8000/emailapi/user/forgotpassword', values);
-            // const res = await axios.post('https://url-shortener-backend-vx4e.onrender.com/api/user/forgotpassword', values);
+            // const res = await axios.post('http://localhost:8000/emailapi/user/forgotpassword', values);
+            const res = await axios.post('https://bulk-email-tool-backend-iazh.onrender.com/emailapi/user/forgotpassword', values);
+          
 
             setResponseMsg(res.data.message);
             toast.success(res.data.message)

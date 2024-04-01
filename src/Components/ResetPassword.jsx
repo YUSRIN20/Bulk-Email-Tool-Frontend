@@ -14,7 +14,8 @@ const ResetPassword = () => {
 
     const validateToken = async () =>{
         try {
-            let res  = await axios.get('http://localhost:8000/emailapi/user/allusers')
+            // let res  = await axios.get('http://localhost:8000/emailapi/user/allusers')
+            let res  = await axios.get('https://bulk-email-tool-backend-iazh.onrender.com/emailapi/user/allusers')
 
             if(res.data && res.data.users){
                 const reqUser = res.data.find((user)=>user.email === email)
@@ -43,7 +44,8 @@ const ResetPassword = () => {
 
     const onSubmit = async (values) =>{
         try {
-            const res  =await axios.put('http://localhost:8000/emailapi/user/resetpassword',{...values,email})
+            // const res  =await axios.put('http://localhost:8000/emailapi/user/resetpassword',{...values,email})
+            const res  =await axios.put('https://bulk-email-tool-backend-iazh.onrender.com/emailapi/user/resetpassword',{...values,email})
 
             setResponseMsg(res.data.message)
             toast.success(res.data.message)
