@@ -1,0 +1,77 @@
+/* #logout-btn{
+    border: none;
+    padding: 1em;
+    border-radius: 12px;
+}
+.box-container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    min-height: 100vh;
+    background-image: linear-gradient(to right top, #d867d8, #cc58dc, #bc4ae1, #aa3de6, #9232ed, #7e2be4, #6824da, #501dd1, #4015b6, #310d9c, #220682, #130169);
+    
+    background-size: cover;
+    background-position: center;
+}
+.card{
+    padding: 50px 0px;
+    color: #000000;
+    background: rgba(255,255,255,.1 );
+    backdrop-filter:blur(30px) ;
+    border: 2px solid rgba(255,255,255,.2 );
+    border-radius: 16px; 
+
+    h1{
+        font-size: 65px;
+    }
+
+    p{
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    button{
+        width: auto;
+        font-size: large;
+        margin-top: 1em;
+        font-weight: 600;
+    }
+    
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+input {
+  font-family: "Poppins", sans-serif;
+}
+h1{
+   font-size: 50px;
+}
+.section{
+    .about-section{
+        margin: 5em  0em 0em ;
+        h4{
+            font-size: 35px;
+        }
+        p{
+            font-size: 20px;
+        }
+    }
+    .started-section{
+        margin: 5em  0em 0em ;
+        h4{
+            font-size: 35px;
+        }
+        p{
+            font-size: 20px;
+        }
+    }
+}
