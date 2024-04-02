@@ -66,17 +66,17 @@ const HomePage = ({ email }) => {
             <h1 className='text-center'>Bulk Email Tool</h1>
             <div className='my-5'>
                 <form onSubmit={formik.handleSubmit}>
-                    <label for="exampleFormControlTextarea1" class="form-label d-flex align-self-start">Subject:</label>
+                    <label htmlFor="exampleFormControlTextarea1" class="form-label d-flex align-self-start">Subject:</label>
                     <input type="text" class="form-control inputs" id='subject' placeholder="Enter your mail subject" value={formik.values.subject} onChange={formik.handleChange}/>
                     <div className='errors' class="form-label d-flex align-self-start">
                         <span className="text-danger">{formik.errors.subject}</span>
                     </div>
-                    <label for="exampleFormControlTextarea1" class="form-label d-flex align-self-start">To:</label>
+                    <label htmlFor="exampleFormControlTextarea1" class="form-label d-flex align-self-start">To:</label>
                     <textarea class="form-control inputs" id='recipients' rows="3" placeholder="Enter your recipients here" value={formik.values.recipients} onChange={formik.handleChange}></textarea>
                     <div className='errors' class="form-label d-flex align-self-start">
                         <span className="text-danger">{formik.errors.recipients}</span>
                     </div>
-                    <label for="exampleFormControlTextarea1" class="form-label d-flex align-self-start">Message:</label>
+                    <label htmlFor="exampleFormControlTextarea1" class="form-label d-flex align-self-start">Message:</label>
                     <textarea class="form-control inputs" id='message' rows="3" placeholder="Enter your message here" values={formik.values.message} onChange={formik.handleChange}></textarea>
                     <div className='errors' class="form-label d-flex align-self-start">
                         <span className="text-danger">{formik.errors.message}</span>

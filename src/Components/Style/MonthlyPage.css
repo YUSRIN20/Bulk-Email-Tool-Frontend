@@ -1,0 +1,11 @@
+#cards-w{
+    background-color: #184189 ;
+    color: white;
+}
+#cards-w{
+    box-shadow:  0 .1rem .25rem  rgb(175, 175, 175);
+    cursor: pointer;
+}
+#cards-w:hover{
+    box-shadow:  0 .2rem 0.500rem  rgb(38, 38, 37);
+}

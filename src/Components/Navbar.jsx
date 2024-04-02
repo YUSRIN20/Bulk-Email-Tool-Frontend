@@ -3,12 +3,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-const Navbar = () => {
+const Navbar = ({email}) => {
     const [showAdminButton, setShowAdminButton] = useState(true);
     const navigate = useNavigate()
 
     const handleView = () => {
-        navigate('/dashboard');
+        navigate(`/dashboard/${email}`);
+        console.log(email);
         setShowAdminButton(false);
     };
 

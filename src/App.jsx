@@ -29,14 +29,14 @@ const App = () => {
         <Routes>
           <Route path='/' element={<DefaultPage />}/>
           <Route path='/register' element={<RegisterPage />} />
-          <Route path='/login' element={<LoginPage email={email} setEmail={setEmail} setUserName={setUserName} />} />
+          <Route path='/login' element={<LoginPage setEmail={setEmail} setUserName={setUserName} />} />
           <Route path='/forgot' element={<ForgotPassword />} />
           <Route path='/resetpassword' element={<ResetPassword />}/>
           <Route path='/welcome' element={<WelcomePage email={email} username={username}/>}/>
-          <Route path='/home/:email' element={<><Navbar  email={email}  setEmail={setEmail} /><HomePage email={email}  /></>} />
-          <Route path ='/dashboard' element={<><Navbar  /><Dashboard /></>} >
-            <Route path='dailylist' element={<Dailylist />} />
-            <Route path='monthlylist' element={<MonthlyList />} />
+          <Route path='/home/:email' element={<><Navbar email={email} /><HomePage email={email}  /></>} />
+          <Route path ='/dashboard/:email' element={<><Navbar email={email} /><Dashboard /></>} >
+            <Route path='dailylist' element={<Dailylist email={email} username={username} />} />
+            <Route path='monthlylist' element={<MonthlyList email={email} username={username}  />} />
           </Route>
         </Routes>
       </BrowserRouter>

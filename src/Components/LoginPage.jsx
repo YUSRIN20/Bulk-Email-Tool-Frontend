@@ -7,7 +7,7 @@ import * as Yup from 'yup'
 import Cookies from 'js-cookie';
 import './Style/Register&LoginForm.css'
 
-const LoginPage = ({setEmail,setUserName,paramsEmail}) => {
+const LoginPage = ({setEmail,setUserName}) => {
     const [responseMsg, SetResponseMsg] = useState('')
     const navigate = useNavigate()
 
