@@ -5,7 +5,7 @@ import './Style/ToolPage.css'
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
-
+import { motion } from 'framer-motion'
 const HomePage = ({ email }) => {
     // const [auth,setAuth] = useState(false)
     // const [responseMsg,SetResponseMsg] = useState('')
@@ -85,14 +85,21 @@ const HomePage = ({ email }) => {
                     <div className='errors' class="form-label d-flex align-self-start">
                         <span className="text-danger">{formik.errors.message}</span>
                     </div>
-
-                    <button type="submit" className="btn solid">
-                        {isLoading ? (
-                            <span className="spinner-border" role="status" aria-hidden="true"></span>
-                        ) : (
-                            <><i className="fa-solid fa-paper-plane"></i> Send Mail</>
-                        )}
-                    </button>
+                    <motion.div
+                        whileHover={{ scale: 1.2 }}
+                        whileTap={{
+                            scale: 0.8,
+                            borderRadius: "100%"
+                        }}
+                        transition={{ type: "spring", stiffness: 400, damping: 17 }}>
+                        <button type="submit" className="btn solid">
+                            {isLoading ? (
+                                <span className="spinner-border" role="status" aria-hidden="true"></span>
+                            ) : (
+                                <><i className="fa-solid fa-paper-plane"></i> Send Mail</>
+                            )}
+                        </button>
+                    </motion.div>
                 </form>
             </div>
 

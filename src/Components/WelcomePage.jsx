@@ -1,6 +1,7 @@
 import React from 'react';
 import './Style/HomePage.css'
 import { useNavigate } from 'react-router-dom';
+import {motion} from 'framer-motion'
 
 
 const WelcomePage = ({ username, email }) => {
@@ -16,9 +17,16 @@ const WelcomePage = ({ username, email }) => {
                     <h1 class="card-title text-center">Hello {username} !</h1>
                     <p class="card-text text-center">Welcome to Bulk Email Tool Application</p>
                     <p class="card-text text-center" style={{fontSize:"larger", marginBottom:"0%"}}>Click here to go to Bulk Email Tool page</p>
-                    <div className='d-flex justify-content-center'>
+                    <motion.div className='d-flex justify-content-center' 
+                     initial={{ scale: 0 }}
+                     animate={{ rotate: 360, scale: 1 }}
+                     transition={{
+                       type: "spring",
+                       stiffness: 260,
+                       damping: 20
+                     }}>
                         <button className='btn btn-success' onClick={handleCLick}>Bulk Email Tool  <i class="fa-solid fa-arrow-right mx-2"></i></button>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </div>
