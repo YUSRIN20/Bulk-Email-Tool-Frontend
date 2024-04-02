@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import * as Yup from 'yup'
 const ResetPassword = () => {
     const [responseMsg,setResponseMsg]  = useState('')
+    const [isLoading,setIsLoading] = useState(false)
     const navigate = useNavigate()
     const location  = useLocation()
     const searchParams = new URLSearchParams(location.search)
@@ -44,6 +45,7 @@ const ResetPassword = () => {
 
     const onSubmit = async (values) =>{
         try {
+            setIsLoading(true)
             // const res  =await axios.put('http://localhost:8000/emailapi/user/resetpassword',{...values,email})
             const res  =await axios.put('https://bulk-email-tool-backend-iazh.onrender.com/emailapi/user/resetpassword',{...values,email})
 
@@ -54,6 +56,8 @@ const ResetPassword = () => {
             console.log(error);
             setResponseMsg(error.response.data.message)
             toast.error(error.response.data.message)
+        }finally{
+            setIsLoading(false)
         }
     }
     
@@ -109,7 +113,7 @@ const ResetPassword = () => {
                             </div>
                         </div>
                         <button type="submit" className="btn-success btn">
-                            Set Password
+                            {isLoading? <span className="spinner-border " role="status" aria-hidden="true"></span>:'Set Password'}
                         </button>
                     </form>
                 </div>
