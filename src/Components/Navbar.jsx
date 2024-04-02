@@ -5,6 +5,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 const Navbar = ({email}) => {
     const [showAdminButton, setShowAdminButton] = useState(true);
+    const [isLoading,setIsLoading] = useState(false)
     const navigate = useNavigate()
 
     const handleView = () => {
@@ -21,6 +22,7 @@ const Navbar = ({email}) => {
     const handleLogout = async () => {
 
         try {
+            setIsLoading(true)
             // const res = await axios.get('http://localhost:8000/emailapi/user/logout');
             const res = await axios.get('https://bulk-email-tool-backend-iazh.onrender.com/emailapi/user/logout');
             // Clear Cookies related to authentication
@@ -29,10 +31,14 @@ const Navbar = ({email}) => {
             localStorage.removeItem('email')
             localStorage.removeItem('username')
             toast.success(res.data.message)
-            navigate('/login')
+            setTimeout(() => { 
+                navigate('/login')
+            }, 500);
 
         } catch (error) {
             console.error('Error while logging out:', error);
+        } finally{
+            setIsLoading(false)
         }
     }
     return (
@@ -49,7 +55,10 @@ const Navbar = ({email}) => {
                         {!showAdminButton && <button className='btn btn-primary mx-5' style={{ width: "auto" }}  onClick={handleNavigate}>Home <i class="fa-solid fa-house ms-1 me-1"></i></button>}
                     </div>
                     <div className='logout-btn-div'>
-                    <button className='btn text-center logout-button' style={{ backgroundColor: "rgb(237, 57, 57)" }} onClick={handleLogout}><i className="fa-solid fa-power-off"></i></button>
+                    <button className='btn text-center logout-button' style={{ backgroundColor: "rgb(237, 57, 57)" }} onClick={handleLogout}>
+                        {isLoading ?<span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>:<i className="fa-solid fa-power-off"></i>}
+                      
+                        </button>
                     </div>
                 </div>
             </div>

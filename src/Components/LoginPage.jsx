@@ -9,6 +9,7 @@ import './Style/Register&LoginForm.css'
 
 const LoginPage = ({setEmail,setUserName}) => {
     const [responseMsg, SetResponseMsg] = useState('')
+    const [isLoading,setIsLoading] = useState(false) // New state for loading
     const navigate = useNavigate()
 
     // formik
@@ -21,6 +22,7 @@ const LoginPage = ({setEmail,setUserName}) => {
 
     const onSubmit = async (values) => {
         try {
+            setIsLoading(true)
             // const res = await axios.post('http://localhost:8000/emailapi/user/login', values);
             const res = await axios.post('https://bulk-email-tool-backend-iazh.onrender.com/emailapi/user/login', values);
  
@@ -37,6 +39,8 @@ const LoginPage = ({setEmail,setUserName}) => {
             SetResponseMsg(error.response.data.message)
             toast.error(error.response.data.message);
 
+        }finally{
+            setIsLoading(false) // Set loading to false after submission
         }
     };
     const formik = useFormik({
@@ -70,7 +74,7 @@ const LoginPage = ({setEmail,setUserName}) => {
                                 <span className="text-danger">{formik.errors.password}</span>
                             </div>
                         </div>
-                        <button type="submit" className="btn solid">Login</button>
+                        <button type="submit" className="btn solid"> {isLoading ? <span className="spinner-border " role="status" aria-hidden="true"></span> : 'Login'}</button>
                         <div>
                             <Link to="/forgot" className='text-danger'>Forgot Password?</Link>
                         </div>

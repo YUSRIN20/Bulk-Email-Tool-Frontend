@@ -24,6 +24,7 @@ const textVariants = {
 
 const RegisterPage = () => {
     const [responseMsg, SetResponseMsg] = useState('')
+    const [isLoading,setIsLoading] = useState(false) // New state for loading
 
     const navigate = useNavigate()
 
@@ -38,8 +39,9 @@ const RegisterPage = () => {
     });
 
     const onSubmit = async (values) =>{
-        console.log("Register Api Payloads", values);
+        // console.log("Register Api Payloads", values);
         try {
+            setIsLoading(true)
             // If user doesn't Exist, proceed with registration
             // const resgisterRes = await axios.post('http://localhost:8000/emailapi/user/register',values)
             const resgisterRes = await axios.post('https://bulk-email-tool-backend-iazh.onrender.com/emailapi/user/register',values)
@@ -62,6 +64,8 @@ const RegisterPage = () => {
                 // Something happened in setting up the request that triggered an error
                 console.log('Error', err.message);
             }
+        }finally{
+            setIsLoading(false) // Set loading to false after submission
         }
 
     };
@@ -113,7 +117,7 @@ const RegisterPage = () => {
                                     <span className="text-danger">{formik.errors.password}</span>
                                 </div>
                             </div>
-                            <button type="submit" className="btn btn-primary">Register</button>
+                            <button type="submit" className="btn btn-primary">{isLoading ? <span className="spinner-border " role="status" aria-hidden="true"></span> :'Register'}</button>
                             <p class="social-text">Or Sign up with social platforms</p>
                             <div class="social-media">
                                 <a href="#" class="social-icon">

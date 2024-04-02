@@ -21,6 +21,7 @@ const HomePage = ({ email }) => {
     //     })
     // },[])
     const [responseMsg, setResponseMsg] = useState('');
+    const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
 
     // formik 
@@ -34,6 +35,7 @@ const HomePage = ({ email }) => {
 
     const onSubmit = async (values) => {
         try {
+            setIsLoading(true)
             // const res = await axios.post(`http://localhost:8000/emailapi/user/sendmultiplemail/${email}`, values)
             const res = await axios.post(`https://bulk-email-tool-backend-iazh.onrender.com/emailapi/user/sendmultiplemail/${email}`, values)
             setResponseMsg(res.data.message)
@@ -42,6 +44,8 @@ const HomePage = ({ email }) => {
             console.log(error)
             setResponseMsg(error.response.data.message);
             toast.error(error.response.data.message)
+        } finally {
+            setIsLoading(false) // Set loading to false after submission
         }
     }
     const formik = useFormik({
@@ -67,7 +71,7 @@ const HomePage = ({ email }) => {
             <div className='my-5'>
                 <form onSubmit={formik.handleSubmit}>
                     <label htmlFor="exampleFormControlTextarea1" class="form-label d-flex align-self-start">Subject:</label>
-                    <input type="text" class="form-control inputs" id='subject' placeholder="Enter your mail subject" value={formik.values.subject} onChange={formik.handleChange}/>
+                    <input type="text" class="form-control inputs" id='subject' placeholder="Enter your mail subject" value={formik.values.subject} onChange={formik.handleChange} />
                     <div className='errors' class="form-label d-flex align-self-start">
                         <span className="text-danger">{formik.errors.subject}</span>
                     </div>
@@ -82,7 +86,13 @@ const HomePage = ({ email }) => {
                         <span className="text-danger">{formik.errors.message}</span>
                     </div>
 
-                    <button type="submit" className="btn solid"><i class="fa-solid fa-paper-plane"></i> Send Mail</button>
+                    <button type="submit" className="btn solid">
+                        {isLoading ? (
+                            <span className="spinner-border" role="status" aria-hidden="true"></span>
+                        ) : (
+                            <><i className="fa-solid fa-paper-plane"></i> Send Mail</>
+                        )}
+                    </button>
                 </form>
             </div>
 
