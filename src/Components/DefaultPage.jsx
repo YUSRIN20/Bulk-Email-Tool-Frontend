@@ -37,12 +37,6 @@ const DefaultPage = () => {
         // Reset the body color when the component unmounts
         return () => {
             document.body.style.backgroundColor = '';
-            document.getElementById('Heading').style.color =""
-            document.getElementById('About-title').style.color =''
-            document.getElementById('get-started-title').style.color =''
-
-
- 
         };
     }, []);
 
