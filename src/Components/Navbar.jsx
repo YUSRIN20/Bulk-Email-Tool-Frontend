@@ -9,7 +9,7 @@ const Navbar = ({email}) => {
 
     const handleView = () => {
         navigate(`/dashboard/${email}`);
-        console.log(email);
+        // console.log(email);
         setShowAdminButton(false);
     };
 
@@ -20,11 +20,6 @@ const Navbar = ({email}) => {
 
     const handleLogout = async () => {
 
-        // // Clear LocalStorage items related to authentication
-        // // localStorage.removeItem('token')
-        // // localStorage.removeItem('username')
-        // Cookies.remove('token')
-        // navigate('/login')
         try {
             // const res = await axios.get('http://localhost:8000/emailapi/user/logout');
             const res = await axios.get('https://bulk-email-tool-backend-iazh.onrender.com/emailapi/user/logout');
@@ -48,12 +43,14 @@ const Navbar = ({email}) => {
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse nav-btns" id="navbarNavDropdown" >
+                <div className="collapse navbar-collapse " id="navbarNavDropdown" >
                     <div className="navbar-nav ms-auto" >
-                        {showAdminButton && <button className='btn btn-primary mx-5 ' style={{ width: "auto" }} onClick={handleView}>Dashboard</button>}
-                        {!showAdminButton && <button className='btn btn-primary mx-5' onClick={handleNavigate}>Home</button>}
+                        {showAdminButton && <button className='btn btn-primary mx-5 ' style={{ width: "auto" }} onClick={handleView}>Dashboard <i class="fa-solid fa-chart-simple mx-1"></i></button>}
+                        {!showAdminButton && <button className='btn btn-primary mx-5' style={{ width: "auto" }}  onClick={handleNavigate}>Home <i class="fa-solid fa-house ms-1 me-1"></i></button>}
                     </div>
+                    <div className='logout-btn-div'>
                     <button className='btn text-center logout-button' style={{ backgroundColor: "rgb(237, 57, 57)" }} onClick={handleLogout}><i className="fa-solid fa-power-off"></i></button>
+                    </div>
                 </div>
             </div>
         </nav>

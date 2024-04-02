@@ -399,4 +399,8 @@ form.sign-in-form {
     bottom: 28%;
     left: 50%;
   }
+  .logout-btn-div{
+    display:flex;
+    justify-content: center;
+  }
 }

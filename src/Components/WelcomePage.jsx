@@ -15,8 +15,9 @@ const WelcomePage = ({ username, email }) => {
                 <div class="card-body">
                     <h1 class="card-title text-center">Hello {username} !</h1>
                     <p class="card-text text-center">Welcome to Bulk Email Tool Application</p>
+                    <p class="card-text text-center" style={{fontSize:"larger", marginBottom:"0%"}}>Click here to go to Bulk Email Tool page</p>
                     <div className='d-flex justify-content-center'>
-                        <button className='btn btn-success' onClick={handleCLick}>Bulk Email Tool</button>
+                        <button className='btn btn-success' onClick={handleCLick}>Bulk Email Tool  <i class="fa-solid fa-arrow-right mx-2"></i></button>
                     </div>
                 </div>
             </div>
