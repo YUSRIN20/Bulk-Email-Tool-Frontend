@@ -55,18 +55,6 @@ const HomePage = ({ email }) => {
     })
     return (
         <div className='container-lg'>
-            {/* {
-                auth?
-                <div>
-                    <h3>You are Authorized</h3>
-                </div>
-                :
-                <div>
-                    <h3>{responseMsg}</h3>
-                    <h3>Login now</h3>
-                    <button className='btn btn-primary'>Login</button>
-                </div>
-            } */}
             <h1 className='text-center'>Bulk Email Tool</h1>
             <div className='my-5'>
                 <form onSubmit={formik.handleSubmit}>
